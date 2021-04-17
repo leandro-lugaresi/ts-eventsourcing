@@ -1,4 +1,4 @@
-import uuid from 'uuid/v4';
+import { v4 as uuidv4 } from 'uuid';
 import { Identity } from './Identity';
 import { default as validate } from 'uuid-validate';
 import { UuidError } from './Error/UuidError';
@@ -6,7 +6,7 @@ import { UuidError } from './Error/UuidError';
 export class UuidIdentity implements Identity {
 
   public static create<T extends UuidIdentity>(this: new (id: string) => T): T {
-    return new this(uuid());
+    return new this(uuidv4());
   }
 
   public static of(id: Identity) {
